@@ -1,6 +1,11 @@
 <template>
     <div class="notes">
-        <div class="note" :class="{full:!grid}" v-for="(note,index) in notes" :key="note">
+        <div class="note"
+             v-for="(note,index) in notes"
+             :key="note"
+             :class="[{
+                 full:!grid,
+             } , note.priority]">
             <div class="note-header" :class="{full:!grid}">
                 <h3>{{ note.titleNote }}</h3>
                 <span class="delete" @click="$emit('onRemoveNote',index)">&times;</span>
@@ -33,17 +38,17 @@ export default {
 <style lang="scss">
 .notes {
     display: flex;
-    margin-top: 2%;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    margin-top: 2%;
     .note {
         margin: 0.5%;
         min-width: 30%;
         height: 100%;
         overflow: hidden;
         padding: 1rem;
-        border-radius: 4px;
+        border-radius: 0 4px 4px 0;
         box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
         background: #fff;
         transition: all .25s cubic-bezier(.02, .01, .47, 1);

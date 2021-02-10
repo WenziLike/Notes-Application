@@ -9,6 +9,10 @@
                         :value="search"
                         @search="search = $event">
                     </search>
+                    <!-- ===============  Delete And Notes-->
+                    <priority :valueSelect="priorityDefault"
+                              @onPriority="priority"
+                    ></priority>
                     <!-- ================ header-->
                     <h1>{{ title }}</h1>
                     <span class="name">{{ name }}</span>
@@ -46,10 +50,12 @@ import Message from '@/components/Message'
 import NewNote from '@/components/NewNote'
 import Notes from '@/components/Notes'
 import Search from '@/components/Search'
+import Priority from '@/components/Priority'
 
 export default {
     data() {
         return {
+            priorityDefault: 'none',
             search: '',
             title: 'Notes App',
             name: 'wenzi',
@@ -57,12 +63,49 @@ export default {
             placeholder: 'Find your note',
             message: null,
             grid: true,
-
             note: {
                 titleNote: '',
                 descr: ''
             },
-            notes: []
+            notes: [
+                {
+                    titleNote: 'First Note',
+                    descr: 'Hello My friend',
+                    date: new Date(Date.now()).toLocaleString(),
+                    priority: 'green',
+                },
+                {
+                    titleNote: 'Two Notes',
+                    descr: 'Always',
+                    date: new Date(Date.now()).toLocaleString(),
+                    priority: 'yellow'
+                },
+                {
+                    titleNote: '2021',
+                    descr: '2021 years plans',
+                    date: new Date(Date.now()).toLocaleString()
+                },
+                {
+                    titleNote: 'Note Clicked',
+                    descr: 'Clicked',
+                    date: new Date(Date.now()).toLocaleString()
+                },
+                {
+                    titleNote: 'Noons',
+                    descr: 'Tomorrow',
+                    date: new Date(Date.now()).toLocaleString()
+                },
+                {
+                    titleNote: 'Bad',
+                    descr: 'Weather not bad',
+                    date: new Date(Date.now()).toLocaleString()
+                },
+                {
+                    titleNote: 'Book',
+                    descr: 'This is Book',
+                    date: new Date(Date.now()).toLocaleString()
+                }
+            ]
         }
     },
     methods: {
@@ -75,14 +118,19 @@ export default {
             this.notes.push({
                 titleNote,
                 descr,
-                date: new Date(Date.now()).toLocaleString()
+                date: new Date(Date.now()).toLocaleString(),
+                priority: this.priorityDefault
             })
             this.titleNote = ''
             this.descr = ''
             this.message = null
+            console.log(this.notes)
         },
         removeNote(index) {
             this.notes.splice(index, 1)
+        },
+        priority(value) {
+            this.priorityDefault = value
         }
     },
     computed: {
@@ -103,7 +151,8 @@ export default {
         Notes,
         Message,
         NewNote,
-        Search
+        Search,
+        Priority
     }
 }
 </script>
@@ -116,6 +165,7 @@ export default {
     h1 {
         display: inline-block;
         text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+        background: unset;
     }
     span.name {
         display: inline-block;
@@ -152,7 +202,7 @@ export default {
         .icons {
             position: absolute;
             top: 240px;
-            left: 40%;
+            left: 38%;
             cursor: pointer;
             z-index: 1;
             span {

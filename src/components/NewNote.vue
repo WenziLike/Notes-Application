@@ -13,7 +13,6 @@
 
 export default {
     emits: ['onAddNote'],
-
     data() {
         return {
             titleNote: '',
@@ -44,12 +43,9 @@ export default {
         cursor: pointer;
         border-radius: 20px;
         box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
-
         &:hover {
             color: #2c3e50;
-
         }
-
         &:active {
             box-shadow: none;
             text-transform: none;

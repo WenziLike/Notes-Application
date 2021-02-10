@@ -20,3 +20,25 @@ body {
     color: $color-fsbook;
 }
 
+.none {
+    border-left: none;
+}
+.red {
+    border-left: 0.6em #ec0404 solid;
+}
+.yellow {
+    border-left: 0.6em yellow solid;
+}
+.green {
+    border-left: 0.6em greenyellow solid;
+}
+.full.red{
+        border-left: 1.6em #ec0404 solid;
+}
+.full.yellow{
+    border-left: 1.6em yellow solid;
+}
+.full.green{
+    border-left: 1.6em greenyellow solid;
+}
+
