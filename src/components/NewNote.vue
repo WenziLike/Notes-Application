@@ -1,23 +1,59 @@
 <template>
-  <div class="new-note">
-    <input v-model="note.title" type="text" />
-    <textarea v-model="note.descr"></textarea>
-    <button @click="addNote">New Note</button>
-  </div>
+    <div class="new-note">
+        <label for="title"></label>
+        <input type="text" id="title" v-model="titleNote">
+        <label for="descr"></label>
+        <textarea id="descr" v-model="descr"></textarea>
+        <button class="btn" @click="onAddNote"> New Note</button>
+    </div>
+
 </template>
 
 <script>
+
 export default {
-  props: {
-    note: {
-      type: Object,
-      required: true,
+    emits: ['onAddNote'],
+
+    data() {
+        return {
+            titleNote: '',
+            descr: ''
+        }
     },
-  },
-  methods: {
-    addNote() {
-      this.$$emit("addNote", this.note);
-    },
-  },
-};
+    methods: {
+        onAddNote() {
+            this.$emit('onAddNote', {
+                titleNote: this.titleNote,
+                descr: this.descr
+            })
+            this.titleNote = ''
+            this.descr = ''
+        }
+    }
+}
 </script>
+<style lang="scss">
+.new-note {
+    .btn {
+        margin-top: 2%;
+        display: inline-block;
+        padding: 0.8em 4em;
+        line-height: 1;
+        text-transform: uppercase;
+        font-weight: 900;
+        cursor: pointer;
+        border-radius: 20px;
+        box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            color: #2c3e50;
+
+        }
+
+        &:active {
+            box-shadow: none;
+            text-transform: none;
+        }
+    }
+}
+</style>

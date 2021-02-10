@@ -1,31 +1,23 @@
 <template>
-  <div>
-    <div class="message">
-      <p>Messange - {{ message }}</p>
-    </div>
-  </div>
+    <h3>{{ message }}</h3>
 </template>
-
 
 <script>
 export default {
-  props: {
-    message: {
-      type: String,
-      required: true,
-    },
-  },
-};
+    props: {
+        message: {
+            type: String,
+            required: true
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>
-.message {
-  text-align: center;
-  padding: 2%;
-}
-p {
-  color: #ec0404;
-  font-weight: 500;
-  font-size: 1.5em;
+h3{
+    color: firebrick;
+    font-style: italic;
+    font-weight: 700;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
 }
 </style>
