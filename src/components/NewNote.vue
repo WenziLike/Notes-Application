@@ -1,12 +1,13 @@
 <template>
-    <div class="new-note">
-        <label for="title"></label>
-        <input type="text" id="title" v-model="titleNote">
-        <label for="descr"></label>
-        <textarea id="descr" v-model="descr"></textarea>
-        <button class="btn" @click="onAddNote"> New Note</button>
+    <div class="wrapper-new-notes">
+        <div class="new-note">
+            <label for="title"></label>
+            <input type="text" id="title" v-model="titleNote" placeholder="title">
+            <label for="descr"></label>
+            <textarea id="descr" v-model="descr" placeholder="note text"></textarea>
+            <button class="btn" @click="onAddNote"> New Note</button>
+        </div>
     </div>
-
 </template>
 
 <script>
@@ -31,25 +32,3 @@ export default {
     }
 }
 </script>
-<style lang="scss">
-.new-note {
-    .btn {
-        margin-top: 2%;
-        display: inline-block;
-        padding: 0.8em 4em;
-        line-height: 1;
-        text-transform: uppercase;
-        font-weight: 900;
-        cursor: pointer;
-        border-radius: 20px;
-        box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
-        &:hover {
-            color: #2c3e50;
-        }
-        &:active {
-            box-shadow: none;
-            text-transform: none;
-        }
-    }
-}
-</style>

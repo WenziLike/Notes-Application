@@ -3,21 +3,31 @@
         <div class="wrapper-content">
             <section>
                 <div class="container">
-                    <!-- ===============  Search-->
-                    <search
-                        :placeholder="placeholder"
-                        :value="search"
-                        @search="search = $event">
-                    </search>
-                    <!-- ===============  Delete And Notes-->
-                    <priority :valueSelect="priorityDefault"
-                              @onPriority="priority"
-                    ></priority>
-                    <!-- ================ header-->
-                    <h1>{{ title }}</h1>
-                    <span class="name">{{ name }}</span>
-                    <div class="sub-title">
-                        <span>{{ subTitle }}</span>
+                    <div class="wrapper-header">
+                        <!-- ================ header-->
+                        <div class="wrapper-title">
+                            <div class="header">
+                                <div class="title">
+                                    <h1>{{ title }}</h1>
+                                    <div class="sub-title">
+                                        <span>{{ subTitle }}</span>
+                                        <span class="name">{{ name }}</span>
+                                    </div>
+                                </div>
+                                <!-- ===============  Message-->
+                                <message v-if="message" :message="message"/>
+                            </div>
+                        </div>
+                        <!-- ===============  Search-->
+                        <search
+                            :placeholder="placeholder"
+                            :value="search"
+                            @search="search = $event">
+                        </search>
+                        <!-- ===============  Priority-->
+                        <priority :valueSelect="priorityDefault"
+                                  @onPriority="priority"
+                        ></priority>
                     </div>
                     <!-- ===============  icons-->
                     <div>
@@ -26,18 +36,18 @@
                             <span :class="{active:!grid}" @click="grid = false">LINE</span>
                         </div>
                     </div>
-                    <!-- ===============  Message-->
-                    <message v-if="message" :message="message"/>
-                    <!-- ===============  New Notes-->
-                    <new-note @onAddNote="addNote"/>
-                    <!-- ===============  Delete And Notes-->
-                    <notes
-                        v-if="notes.length"
-                        :notes="notesFilter"
-                        :grid="grid"
-                        @onRemoveNote="removeNote"/>
-                    <div v-else>
-                        <h2 class="no-notes">No Notes</h2>
+                    <div class="wrapper-body">
+                        <!-- ===============  New Notes-->
+                        <new-note @onAddNote="addNote"/>
+                        <!-- ===============  Delete And Notes-->
+                        <notes
+                            v-if="notes.length"
+                            :notes="notesFilter"
+                            :grid="grid"
+                            @onRemoveNote="removeNote"/>
+                        <div v-else>
+                            <h2 class="no-notes">No Notes</h2>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -58,8 +68,8 @@ export default {
             priorityDefault: 'none',
             search: '',
             title: 'Notes App',
-            name: 'wenzi',
-            subTitle: 'GridLine',
+            name: 'Wenzi',
+            subTitle: 'GreatLine',
             placeholder: 'Find your note',
             message: null,
             grid: true,
@@ -70,40 +80,48 @@ export default {
             notes: [
                 {
                     titleNote: 'First Note',
-                    descr: 'Hello My friend',
+                    descr: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                     date: new Date(Date.now()).toLocaleString(),
-                    priority: 'green',
+                    priority: 'green'
                 },
                 {
-                    titleNote: 'Two Notes',
-                    descr: 'Always',
+                    titleNote: 'Second Note',
+                    descr: 'Consequatur illo, tempora.',
                     date: new Date(Date.now()).toLocaleString(),
-                    priority: 'yellow'
+                    priority: 'none'
                 },
                 {
-                    titleNote: '2021',
+                    titleNote: 'Third Note',
                     descr: '2021 years plans',
-                    date: new Date(Date.now()).toLocaleString()
+                    date: new Date(Date.now()).toLocaleString(),
+                    priority: 'red'
                 },
                 {
-                    titleNote: 'Note Clicked',
+                    titleNote: 'Fourth Note',
                     descr: 'Clicked',
-                    date: new Date(Date.now()).toLocaleString()
+                    date: new Date(Date.now()).toLocaleString(),
+                    priority: 'blue'
                 },
                 {
-                    titleNote: 'Noons',
-                    descr: 'Tomorrow',
-                    date: new Date(Date.now()).toLocaleString()
+                    titleNote: 'Fifth Note',
+                    descr: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+                        'Consequatur illo, tempora.' +
+                        ' Accusamus doloremque eligendi ' +
+                        'et inventore omnis similique sint vero.',
+                    date: new Date(Date.now()).toLocaleString(),
+                    priority: 'none'
                 },
                 {
-                    titleNote: 'Bad',
+                    titleNote: 'Sixth Note',
                     descr: 'Weather not bad',
-                    date: new Date(Date.now()).toLocaleString()
+                    date: new Date(Date.now()).toLocaleString(),
+                    priority: 'none'
                 },
                 {
                     titleNote: 'Book',
-                    descr: 'This is Book',
-                    date: new Date(Date.now()).toLocaleString()
+                    descr: 'Accusamus doloremque eligendi et inventore omnis similique sint vero.',
+                    date: new Date(Date.now()).toLocaleString(),
+                    priority: 'none'
                 }
             ]
         }
@@ -159,67 +177,32 @@ export default {
 
 <style lang="scss">
 #app {
-    section {
-        padding: 0;
+    .none {
+        border-left: 0.6em #ffffff solid;
     }
-    h1 {
-        display: inline-block;
-        text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
-        background: unset;
+    .red {
+        border-left: 0.6em #ec0404 solid;
     }
-    span.name {
-        display: inline-block;
-        padding-left: 0.5%;
+    .yellow {
+        border-left: 0.6em yellow solid;
     }
-    .container {
-        textarea,
-        input {
-            display: block;
-            //background-color: #ffffff;
-            border: none;
-            border-bottom: #00aced 3px solid;
-            min-width: 50%;
-            height: 40px;
-            padding: 5px 10px 5px 10px;
-            font-size: 16px;
-            outline: none;
-            border-radius: 2px;
-        }
-        textarea {
-            position: relative;
-            z-index: 2;
-            margin-top: 2%;
-            height: 50px; /* Высота поля в пикселах */
-            resize: none; /* Запрещаем изменять размер */
-            border: #00aced 1px solid;
-            box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
-        }
-        div.sub-title {
-            position: absolute;
-            top: 56px;
-            left: -10px;
-        }
-        .icons {
-            position: absolute;
-            top: 240px;
-            left: 38%;
-            cursor: pointer;
-            z-index: 1;
-            span {
-                margin: 5px;
-                color: #2c2c2c;
-                font-weight: 900;
-                &.active {
-                    color: #8854d0;
-                }
-            }
-        }
-        .no-notes {
-            text-align: center;
-            font-weight: 900;
-            font-size: 2em;
-            margin-top: 10%;
-        }
+    .green {
+        border-left: 0.6em greenyellow solid;
+    }
+    .blue {
+        border-left: 0.6em #0077ff solid;
+    }
+    .full.red {
+        border-left: 1.6em #ec0404 solid;
+    }
+    .full.yellow {
+        border-left: 1.6em yellow solid;
+    }
+    .full.green {
+        border-left: 1.6em greenyellow solid;
+    }
+    .full.blue {
+        border-left: 1.6em #0077ff solid;
     }
 }
 </style>

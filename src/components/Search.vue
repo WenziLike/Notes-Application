@@ -1,9 +1,6 @@
 <template>
     <div class="wrapper-search">
         <div class="search">
-            <!--            <div class="search-icon">-->
-            <!--                <span>Search</span>-->
-            <!--            </div>-->
             <label for="Search">Search</label>
             <input type="text" id="Search" :placeholder="placeholder" v-model="search">
         </div>
@@ -37,17 +34,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-.wrapper-search {
-    position: absolute;
-    top: 3%;
-    right: 0;
-    input {
-        padding: 0;
-    }
-    label {
-        font-weight: 600;
-    }
-}
-</style>
