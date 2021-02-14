@@ -5,7 +5,7 @@
             <input type="text" id="title" v-model="titleNote" placeholder="title">
             <label for="descr"></label>
             <textarea id="descr" v-model="descr" placeholder="note text"></textarea>
-            <button class="btn" @click="onAddNote"> New Note</button>
+            <button class="btn" @click="onAddNote" aria-haspopup="true"> New Note</button>
         </div>
     </div>
 </template>

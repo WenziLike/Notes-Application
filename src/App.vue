@@ -20,9 +20,9 @@
                         </div>
                         <!-- ===============  Search-->
                         <search
-                            :placeholder="placeholder"
-                            :value="search"
-                            @search="search = $event">
+                          :placeholder="placeholder"
+                          :value="search"
+                          @search="search = $event">
                         </search>
                         <!-- ===============  Priority-->
                         <priority :valueSelect="priorityDefault"
@@ -41,10 +41,10 @@
                         <new-note @onAddNote="addNote"/>
                         <!-- ===============  Delete And Notes-->
                         <notes
-                            v-if="notes.length"
-                            :notes="notesFilter"
-                            :grid="grid"
-                            @onRemoveNote="removeNote"/>
+                          v-if="notes.length"
+                          :notes="notesFilter"
+                          :grid="grid"
+                          @onRemoveNote="removeNote"/>
                         <div v-else>
                             <h2 class="no-notes">No Notes</h2>
                         </div>
@@ -105,9 +105,9 @@ export default {
                 {
                     titleNote: 'Fifth Note',
                     descr: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                        'Consequatur illo, tempora.' +
-                        ' Accusamus doloremque eligendi ' +
-                        'et inventore omnis similique sint vero.',
+                      'Consequatur illo, tempora.' +
+                      ' Accusamus doloremque eligendi ' +
+                      'et inventore omnis similique sint vero.',
                     date: new Date(Date.now()).toLocaleString(),
                     priority: 'none'
                 },
@@ -174,35 +174,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-#app {
-    .none {
-        border-left: 0.6em #ffffff solid;
-    }
-    .red {
-        border-left: 0.6em #ec0404 solid;
-    }
-    .yellow {
-        border-left: 0.6em yellow solid;
-    }
-    .green {
-        border-left: 0.6em greenyellow solid;
-    }
-    .blue {
-        border-left: 0.6em #0077ff solid;
-    }
-    .full.red {
-        border-left: 1.6em #ec0404 solid;
-    }
-    .full.yellow {
-        border-left: 1.6em yellow solid;
-    }
-    .full.green {
-        border-left: 1.6em greenyellow solid;
-    }
-    .full.blue {
-        border-left: 1.6em #0077ff solid;
-    }
-}
-</style>
